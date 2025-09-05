@@ -1,5 +1,5 @@
-import "../components/Header/Header.tsx"
-import "../components/Footer/Footer.tsx"
+import Header from "../components/Header/Header"
+import Footer from "../components/Footer/Footer"
 
 import "./MainLayout.css"
 

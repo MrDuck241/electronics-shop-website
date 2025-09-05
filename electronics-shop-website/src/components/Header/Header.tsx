@@ -1,8 +1,11 @@
 import "./Header.css"
 
-export default function Header() {
+const Header = () => {
     return (
         <header>
+            hello 123
         </header>
     )
 }
+
+export default Header;
