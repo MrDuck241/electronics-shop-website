@@ -1,9 +1,15 @@
 import "./Header.css"
+import { useEffect } from "react";
 
 const Header = () => {
+
+    useEffect(() => {
+        console.log("Priviet");
+    }, [])
+
     return (
         <header>
-            hello 123
+            <span>hello 123</span>
         </header>
     )
 }
