@@ -4,7 +4,6 @@ import MainLayout from "../layouts/MainLayout";
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<MainLayout />}>
-
         </Route>
     )
 );
