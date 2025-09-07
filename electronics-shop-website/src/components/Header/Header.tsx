@@ -4,7 +4,7 @@ import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 
 const Header = () => {
     return (
-        <header className="w-full h-[80px] bg-gradient-to-r from-black via-gray-900 to-gray-800 flex">
+        <header className="w-full h-[80px] bg-gradient-to-r from-black via-gray-900 to-gray-800 flex border-b-2 border-gray-500 border-solid">
             <Flex align="center" justify={"between"} className="w-full pl-4 pr-4">
                 <Text size="7" className="text-cyan-400 font-bold">ElectroShop</Text>
 
