@@ -1,0 +1,5 @@
+.registerpage-container {
+    background-image: url("images/backgrounds/main_background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}

@@ -1,8 +1,16 @@
 import "./Header.css"
 import { Flex, Text, Button, Slider, TextField } from "@radix-ui/themes";
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+
+    const navigate = useNavigate();
+
+    const changePage = (newRoute: string) => {
+        navigate(newRoute);
+    }
+
     return (
         <header className="w-[100%] h-[80px] bg-gradient-to-r from-black via-gray-900 to-gray-800 flex border-b-2 border-gray-500 border-solid">
             <Flex align="center" justify={"between"} className="w-full pl-4 pr-4">
@@ -25,7 +33,7 @@ const Header = () => {
                     </Flex>
 
                     <Flex direction={"column"} align={"center"} className="ml-[20px]">
-                        <button className="flex flex-col items-center cursor-pointer">
+                        <button className="flex flex-col items-center cursor-pointer" onClick={() => changePage("/register")}>
                             <img src="images/icons/register_icon.png" alt="Register icon" className="w-[30px] h-[30px]" />
                             <span className="text-cyan-400 font-medium">Register</span>
                         </button>
