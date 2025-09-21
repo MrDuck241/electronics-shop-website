@@ -26,7 +26,7 @@ const Header = () => {
 
                 <Flex className="w-[40%] pl-[350px]">
                     <Flex direction={"column"} align={"center"} className="ml-[20px]">
-                        <button className="flex flex-col items-center cursor-pointer">
+                        <button className="flex flex-col items-center cursor-pointer" onClick={() => changePage("/login")}>
                             <img src="images/icons/login_icon.png" alt="Login icon" className="w-[30px] h-[30px]" />
                             <span className="text-cyan-400 font-medium">Log in</span>
                         </button>
