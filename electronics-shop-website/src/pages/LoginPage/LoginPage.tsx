@@ -71,12 +71,14 @@ const LoginPage = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: 'include',
                 body: JSON.stringify({ login: userLogin, password: userPassword }),
             });
 
             const responseData = await response.json();
 
             if (responseData.status === 'success') {
+                localStorage.setItem("userLogin", responseData.user.login);
                 alert("Login successful! You can now access your account.");
                 changePage("/");
             }
