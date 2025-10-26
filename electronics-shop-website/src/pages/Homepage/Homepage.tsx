@@ -1,9 +1,10 @@
 import "./Homepage.css"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Homepage = () => {
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const productsTypes = useRef(null);
 
     const checkAuth = async () => {
         try {
