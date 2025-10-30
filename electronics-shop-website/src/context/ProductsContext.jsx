@@ -23,17 +23,38 @@ export const ProductsListProvider = ({ children }) => {
                 credentials: "include",
             });
 
-            const responseData = await response.json();
+            const contentType = response.headers.get("content-type") || "";
 
-            if (responseData.status === "success") {
-                setProductsTypesList(responseData.products_types);
-                console.log(responseData.products_types);
+            const bodyText = await response.text();
+
+            if (!response.ok) {
+                console.error("Non-OK response body:", bodyText);
+                throw new Error(`Request failed: ${response.status} ${response.statusText} - ${bodyText}`);
+            }
+
+            let responseData;
+            if (contentType.includes("application/json")) {
+                try {
+                    responseData = JSON.parse(bodyText);
+                } catch (parseErr) {
+                    console.error("Failed to parse JSON. Response text:", bodyText);
+                    throw new Error("Invalid JSON response from server");
+                }
             } else {
+                console.error("Expected JSON but got:", bodyText);
+                throw new Error("Server did not return JSON");
+            }
+
+            if (responseData && responseData.status === "success") {
+                console.log(responseData.products_types[0]);
+                setProductsTypesList(responseData.products_types[0]);
+            } else {
+                console.error("Unexpected response format:", responseData);
                 throw new Error("Products fetching failed");
             }
-        } catch (error) {
-            console.error("Error during fetching products:", error);
-            setError(error.message);
+        } catch (err) {
+            console.error("Error during fetching products:", err);
+            setError(err.message || "Unknown error");
         } finally {
             setLoading(false);
         }
@@ -45,7 +66,7 @@ export const ProductsListProvider = ({ children }) => {
 
     return (
         <ProductsContext.Provider
-            value={{ productsTypesList, loading, error, getProductsTypes }}
+            value={{ productsList: productsTypesList, loading, error, getProductsTypes }}
         >
             {children}
         </ProductsContext.Provider>
